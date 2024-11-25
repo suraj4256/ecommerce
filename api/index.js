@@ -13,7 +13,6 @@ app.use(bodyParser.json());
 app.use('/api/auth', authRoutes);
 
 const mongoURI = `mongodb+srv://surajdey2k1:${process.env.MONGO_PASSWORD}@cluster0.tgcxi.mongodb.net/`;
-console.log(process.env.MONGO_PASSWORD);  
 mongoose.connect(mongoURI,{
 }).then(()=>{
     console.log("Connected Successfully");
