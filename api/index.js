@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -9,11 +10,11 @@ app.use(cors());
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-
 app.use('/api/auth', authRoutes);
 
-
-mongoose.connect("mongodb+srv://surajdey2k1:surajdey2k1%23mongo@cluster0.tgcxi.mongodb.net/",{
+const mongoURI = `mongodb+srv://surajdey2k1:${process.env.MONGO_PASSWORD}@cluster0.tgcxi.mongodb.net/`;
+console.log(process.env.MONGO_PASSWORD);  
+mongoose.connect(mongoURI,{
 }).then(()=>{
     console.log("Connected Successfully");
 }).catch((error)=>{
